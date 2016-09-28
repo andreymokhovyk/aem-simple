@@ -1,0 +1,34 @@
+@import "colours";
+
+// Global
+// ------
+
+$basic-font-family: Arial, Helvetica, sans-serif;
+$heading-font-family: 'ScoutCond-Regular', Arial, Helvetica, sans-serif;
+
+// Colours
+// --------------
+
+$colour-map: (
+  fossil: map-get($colours, carrotOrange),
+  primary: map-get($colours, cornflowerBlue),
+  alert: map-get($colours, thunderbird),
+  alert-dark: map-get($colours, tabasco),
+
+  basic-ultralight: map-get($colours, gallery),
+  basic-light: map-get($colours, silver),
+  basic-medium: map-get($colours, silverChalice),
+  basic-dark: map-get($colours, doveGray),
+
+  black: map-get($colours, mineShaft),
+  white: map_get($colours, white)
+);
+
+// Controls
+// --------
+
+$control-padding: 0 16px;
+$control-margin: 0;
+$control-height: 48px;
+$control-font-size: rem-calc(15);
+$control-color: color(black);

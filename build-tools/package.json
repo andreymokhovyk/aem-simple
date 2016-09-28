@@ -1,0 +1,44 @@
+{
+  "name": "fossil-repair",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "jest"
+  },
+  "engines": {
+    "node": "4.6.0",
+    "npm": "3.10.8"
+  },
+  "devDependencies": {
+    "del": "^2.2.2",
+    "glob": "^7.1.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-cached": "^1.1.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-dust": "^1.0.2",
+    "gulp-filter": "^2.0.2",
+    "gulp-imagemin": "2.3.0",
+    "gulp-insert": "^0.4.0",
+    "gulp-jshint": "^1.10.0",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-watch": "^4.2.4",
+    "gulp.spritesmith": "^3.5.0",
+    "jshint-stylish": "^1.0.1",
+    "lodash": "^3.9.3",
+    "merge-stream": "^0.1.7",
+    "run-sequence": "^1.0.2"
+  },
+  "jest": {
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules"
+    ],
+    "testPathDirs": [
+      "<rootDir>/../"
+    ]
+  },
+  "repository": "",
+  "author": ""
+}

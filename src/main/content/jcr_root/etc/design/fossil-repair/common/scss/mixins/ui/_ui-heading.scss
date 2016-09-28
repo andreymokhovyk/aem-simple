@@ -1,0 +1,19 @@
+@mixin ui-heading($h, $heading-color: $black) {
+  margin-top: 0;
+  margin-bottom: $header-margin-bottom;
+  font-family: $heading-font-family;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  color: $heading-color;
+  text-rendering: optimizeLegibility;
+
+  // Heading sizes
+  @each $size, $headers in $header-sizes {
+    @include breakpoint($size) {
+       @if map-has-key($headers, $h) {
+         font-size: rem-calc(map-get($headers, $h));
+       }
+    }
+  }
+}

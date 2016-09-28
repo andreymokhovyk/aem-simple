@@ -1,0 +1,84 @@
+// UI-SELECT variables
+// ------------------
+
+$select-height: $control-height;
+$select-margin: $control-margin !default;
+$select-padding: 0 48px+16px 0 16px;
+$select-border: color(basic-light);
+$select-border-hover: color(basic-medium);
+$select-background: color(white);
+$select-font-family: $basic-font-family;
+$select-font-size: $control-font-size;
+$select-color: $control-color;
+
+// Example usage in HTML:
+// ---------------------
+
+// In order to disable control add attr "disabled" to select element directly.
+
+/*
+  <label for="">
+      <select disabled name="" id="">
+          <option value="">Selected</option>
+          <option value="">Disabled</option>
+      </select>
+      <span class="select__arrow"></span>
+  </label>
+*/
+
+
+@mixin ui-select(
+  $margin: $select-margin
+) {
+
+  & {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    margin: $margin;
+
+    select {
+      display: inline-block;
+      width: 100%;
+      height: $select-height;
+      margin: 0;
+      padding: $select-padding;
+      border: 1px solid $select-border;
+      background:$select-background;
+      transition: border-color 0.25s ease-in-out;
+      font-family: $select-font-family;
+      font-size: $select-font-size;
+      line-height: 48px;
+      color: $select-color;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+
+      &:hover,
+      &:hover ~ .select__arrow,
+      &:focus,
+      &:focus ~ .select__arrow {
+        border-color: $select-border-hover;
+      }
+
+      &[disabled],
+      &[disabled] ~ .select__arrow{
+        opacity: .5;
+        cursor: not-allowed;
+      }
+    }
+
+    .select__arrow {
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: block;
+      width: $select-height;
+      height: $select-height;
+      border-left: 1px solid $select-border;
+      pointer-events: none;
+      transition: border-color 0.25s ease-in-out;
+      @include sprite($chevron-down-black-icon);
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.tmp/
+build-tools/node_modules/
+build-tools/report/
+build-tools/test/coverage.html
+build-tools/node/
+build-tools/coverage/
+
+
+/src/main/content/jcr_root/apps/fossil-repair/pages/**/js.txt
+/src/main/content/jcr_root/apps/fossil-repair/pages/**/css.txt
+/src/main/content/jcr_root/apps/fossil-repair/pages/**/*.css
+
+# Ignore compiled sprite map and spritesheet images
+/src/main/content/jcr_root/etc/design/fossil-repair/common/scss/mixins/_sprite.scss
+/src/main/content/jcr_root/etc/design/fossil-repair/common/css/**/*.css
+/src/main/content/jcr_root/etc/design/fossil-repair/assets/img/sprite/*.png
+
+

@@ -1,0 +1,62 @@
+// UI-INPUT variables
+// ------------------
+
+$input-height: $control-height;
+$input-margin: $control-margin !default;
+$input-padding: $control-padding;
+$input-border: color(basic-light);
+$input-border-hover: color(basic-medium);
+$input-border-disabled: $input-border;
+$input-border-focus: color(primary);
+$input-background: color(white);
+$input-background-disabled: color(basic-ultralight);
+$input-font-family: $basic-font-family;
+$input-font-size: $control-font-size;
+$input-placeholder-font-size: rem-calc(13);
+$input-color: $control-color;
+$input-placeholder-color: color(basic-medium);
+
+
+@mixin ui-input(
+  $margin: $input-margin
+) {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: $input-height;
+  margin: $margin;
+  padding: $input-padding;
+  border: 1px solid $input-border;
+  background-color: $input-background;
+  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+  font-family: $input-font-family;
+  font-size: $input-font-size;
+  text-align: left;
+  color: $input-color;
+
+  &:hover {
+    border-color: $input-border-hover;
+    box-shadow: none;
+  }
+
+  &:focus {
+    border-color: $input-border-focus;
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:disabled,
+  &[readonly],
+  &_disabled {
+    background-color: $input-background-disabled;
+    border-color: $input-border-disabled;
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    font-size: $input-placeholder-font-size;
+    color: $input-placeholder-color;
+  }
+
+}

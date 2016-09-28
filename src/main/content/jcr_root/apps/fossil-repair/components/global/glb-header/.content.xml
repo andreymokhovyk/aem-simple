@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jcr:root
+        xmlns:cq="http://www.day.com/jcr/cq/1.0"
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        allowedParents="[*/*parsys]"
+        jcr:primaryType="cq:Component"
+        jcr:title="Page Header"
+        jcr:description="Page Header Component"
+        componentGroup="test"/>

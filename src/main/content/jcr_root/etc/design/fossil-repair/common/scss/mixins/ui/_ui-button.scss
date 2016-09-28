@@ -1,0 +1,85 @@
+// UI-BUTTON variables
+// ------------------
+
+$button-padding: $control-padding;
+$button-margin: $control-margin;
+$button-background-disabled: color(basic-light);
+$button-color-disabled: color(white);
+$button-font-size: rem-calc(23);
+$button-line-height: $control-height;
+
+@mixin ui-button-base {
+  display: inline-block;
+  padding: $button-padding;
+  margin: $button-margin;
+  border: 1px solid transparent;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: $heading-font-family;
+  font-size: $button-font-size;
+  line-height: $button-line-height;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  vertical-align: middle;
+  outline: 0;
+
+  &:focus{
+    box-shadow: inset 0 1px 1px 0 rgba(color(black), .25);
+  }
+}
+
+@mixin ui-button-disabled {
+  &[disabled],
+  &[disabled]:hover,
+  &_disabled,
+  &_disabled:hover,
+  &_disabled:focus {
+    background-color: $button-background-disabled;
+    border-color: transparent;
+    color: $button-color-disabled;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}
+
+// @param $type: primary, secondary
+@mixin ui-button ($type) {
+  @include ui-button-base;
+
+  @if $type == primary {
+
+    $button-background: color(black);
+    $button-background-hover: color(basic-dark);
+    $button-color: color(white);
+
+    background-color: $button-background;
+    color: $button-color;
+
+    &:hover, &:focus {
+      background-color: $button-background-hover;
+      color: $button-color;
+    }
+  }
+
+  @if $type == secondary {
+
+    $button-background: transparent;
+    $button-background-hover: color(fossil);
+    $button-color: color(black);
+    $button-color-hover: color(white);
+
+    background-color: $button-background;
+    border-color: $button-color;
+    color: $button-color;
+
+    &:hover, &:focus {
+      background-color: $button-background-hover;
+      border-color: transparent;
+      color: $button-color-hover;
+    }
+  }
+
+  @include ui-button-disabled;
+}

@@ -1,0 +1,18 @@
+.tmp/
+node_modules/
+report/
+etc/clientlibs/marks/global/css/*.css
+apps/marks/pages/**/js.txt
+apps/marks/pages/**/css.txt
+apps/marks/pages/**/*.css
+test/coverage.html
+node/
+coverage/
+
+# Ignore compiled sprite map and spritesheet images
+/src/main/content/jcr_root/etc/clientlibs/marks/common/scss/mixins/_sprite.scss
+/src/main/content/jcr_root/etc/clientlibs/marks/common/css/**/*.css
+/src/main/content/jcr_root/etc/clientlibs/marks/global/img/sprite/*.png
+
+# Custom build of Modernizr
+etc/clientlibs/marks/common/js/libs/modernizr-custom.js

@@ -1,0 +1,41 @@
+//@import "~foundation-sites/scss/grid/grid";
+@import "vars";
+
+// Global
+// ------
+
+$body-font-family: $basic-font-family;
+
+// Grid
+// ----
+
+$grid-column-gutter: (
+  small: rem-calc(24px)
+);
+
+$grid-row-width: rem-calc(1400px);
+
+
+
+// Typography
+// ----------
+
+$header-font-family: $body-font-family;
+$header-sizes: (
+  small: (
+    'h1': 75,
+    'h2': 60,
+    'h3': 45,
+    'h4': 30,
+    'h5': 23,
+    'h6': 15,
+  ),
+  medium: (
+    'h1': 75,
+    'h2': 60,
+    'h3': 45,
+    'h4': 30,
+    'h5': 23,
+    'h6': 15,
+  ),
+);

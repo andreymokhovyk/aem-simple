@@ -1,0 +1,5 @@
+<sly data-sly-test="${!properties.title && (wcmmode.edit || wcmmode.design)}">
+    Click here to configure component
+</sly>
+<h1>${properties.title}</h1>
+<p>${properties.description @ context="html"}</p>
