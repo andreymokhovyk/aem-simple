@@ -3,7 +3,7 @@
 var path = require('path');
 var glob = require('glob');
 
-module.exports = function(gulp, options, plugins) {
+module.exports = function(gulp, plugins, options) {
     var pattern;
     var cwd;
 
@@ -16,7 +16,7 @@ module.exports = function(gulp, options, plugins) {
         var taskConfig = require(path.join(cwd, file));
 
         if (typeof taskConfig === 'function') {
-            taskConfig(gulp, options, plugins);
+            taskConfig(gulp, plugins, options);
         }
     });
 };

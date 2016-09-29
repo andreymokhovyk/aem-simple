@@ -1,6 +1,6 @@
 /* jshint node: true */
 
-module.exports = function(gulp, options, plugins) {
+module.exports = function(gulp, $, options) {
     var path = require('path');
     var merge = require('merge-stream');
 
@@ -13,13 +13,9 @@ module.exports = function(gulp, options, plugins) {
     ];
 
     gulp.task('sass:clean', function() {
-        var params = {
-            read: false
-        };
-
         var tasks = base.map(function(folder) {
-            return gulp.src(folder + '/**/*.css', params)
-                .pipe(plugins.clean({force: true}));
+            return gulp.src(folder + '/**/*.css', {read: false})
+                .pipe($.clean({force: true}));
         });
 
         return merge(tasks);
@@ -47,12 +43,12 @@ module.exports = function(gulp, options, plugins) {
 
             return gulp.src(folder + '/**/!(_*).scss')
                 // Import scss common into each scss file (mixins, variables etc.)
-                .pipe(plugins.cached('sass'))
-                .pipe(plugins.insert.prepend(helperImport))
-                .pipe(plugins.sass())
+                .pipe($.cached('sass'))
+                .pipe($.insert.prepend(helperImport))
+                .pipe($.sass())
                 .on('error', handleError)
-                .pipe(plugins.autoprefixer(autoprefixerConfig))
-                .pipe(plugins.rename(fileToDest))
+                .pipe($.autoprefixer(autoprefixerConfig))
+                .pipe($.rename(fileToDest))
                 .pipe(gulp.dest(folder));
         });
 

@@ -1,6 +1,6 @@
 /* jshint node: true */
 
-module.exports = function(gulp, options, plugins) {
+module.exports = function(gulp, $, options) {
     var merge = require('merge-stream');
     var glob = require('glob');
 
@@ -10,13 +10,9 @@ module.exports = function(gulp, options, plugins) {
     var base = glob.sync(paths.COMPONENTS + '/*/*/');
 
     gulp.task('dust:clean', function() {
-        var params = {
-            read: false
-        };
-
         var tasks = base.map(function(folder) {
-            return gulp.src(folder + '/**/dust-templates.js', params)
-                .pipe(plugins.clean({force: true}));
+            return gulp.src(folder + '/**/dust-templates.js', {read: false})
+                .pipe($.clean({force: true}));
         });
 
         return merge(tasks);
@@ -31,8 +27,8 @@ module.exports = function(gulp, options, plugins) {
 
         var tasks = base.map(function(folder) {
             return gulp.src(folder + '/**/*.dust')
-                .pipe(plugins.cached('dust'))
-                .pipe(plugins.dust({
+                .pipe($.cached('dust'))
+                .pipe($.dust({
                     name: function(file) {
                         var partOfName = file.relative.replace('.dust', '').split(/[_-]/);
 
@@ -42,7 +38,7 @@ module.exports = function(gulp, options, plugins) {
                     }
                 }))
                 .on('error', handleError)
-                .pipe(plugins.concat('dust-templates.js'))
+                .pipe($.concat('dust-templates.js'))
                 .pipe(gulp.dest(folder + '/clientlibs/js/'));
         });
 

@@ -1,8 +1,8 @@
 /* jshint node: true */
 
-module.exports = function(gulp, options, plugins) {
+module.exports = function(gulp, $, options) {
     var merge = require('merge-stream');
-    var imagemin = require('gulp-imagemin');
+    var buffer = require('vinyl-buffer');
 
     var paths = require('../gulp-config/paths');
 
@@ -22,16 +22,12 @@ module.exports = function(gulp, options, plugins) {
      * need for clean images with different names (hash)
      */
     gulp.task('sprite:clean', function() {
-        var params = {
-            read: false
-        };
-
-        return gulp.src(paths.SPRITE.TARGET_IMAGE + '/icons*.png', params)
-            .pipe(plugins.clean({force: true}));
+        return gulp.src(paths.SPRITE.TARGET_IMAGE + '/icons*.png', {read: false})
+            .pipe($.clean({force: true}));
     });
 
     /**
-     * Compile sprite images & data (clean before compile)
+     * Compile sprite images & data
      */
     gulp.task('sprite:compile', function() {
         var currentTimestamp = Date.now();
@@ -43,11 +39,6 @@ module.exports = function(gulp, options, plugins) {
             retinaImgName: 'icons-retina.png',
             retinaImgPath: paths.SPRITE.TARGET_IMAGE + '/icons-retina.png?' + currentTimestamp,
             cssName: '_sprite.scss',
-            cssVarMap: function(sprite) {
-                if (sprite.image.indexOf('retina') > -1) {
-                    sprite.name = 'retina-' + sprite.name;
-                }
-            },
             algorithm: 'binary-tree',
             algorithmOpts: {
                 sort: false
@@ -56,10 +47,11 @@ module.exports = function(gulp, options, plugins) {
         };
 
         var spriteData = gulp.src(getSourceMap(paths.SPRITE.FILTER_IMAGES))
-            .pipe(plugins.spritesmith(spriteOptions));
+            .pipe($.spritesmith(spriteOptions));
 
         var imgStream = spriteData.img
-            .pipe(imagemin())
+            .pipe(buffer())
+            .pipe($.imagemin())
             .pipe(gulp.dest(paths.SPRITE.TARGET_IMAGE));
 
         var cssStream = spriteData.css

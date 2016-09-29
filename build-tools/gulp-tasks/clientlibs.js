@@ -1,6 +1,6 @@
 /* jshint node: true */
 
-module.exports = function(gulp, options, plugins) {
+module.exports = function(gulp, $, options) {
     var fs = require('fs');
     var path = require('path');
     var glob = require('glob');
@@ -8,20 +8,16 @@ module.exports = function(gulp, options, plugins) {
     var _ = require('lodash');
     var merge = require('merge-stream');
 
-    var paths = require('../paths');
+    var paths = require('../gulp-config/paths');
 
     var base = [
         paths.COMPONENTS,
-        paths.PAGES,
-        paths.GLOBAL,
-        paths.COMMON,
-        paths.VENDOR,
-        paths.INCLUDES
+        paths.COMMON
     ];
 
     var baseClean = [
         paths.COMPONENTS,
-        paths.PAGES
+        paths.COMMON
     ];
 
     gulp.task('clientlibs:clean', function() {
@@ -48,8 +44,8 @@ module.exports = function(gulp, options, plugins) {
         var tasks = base.map(function(folder) {
 
             return gulp.src(folder + '/**/.content.xml')
-                .pipe(plugins.cached('clientlibs'))
-                .pipe(plugins.filter(function(file) {
+                .pipe($.cached('clientlibs'))
+                .pipe($.filter(function(file) {
                     var text;
 
                     if (file.isBuffer()) {
@@ -60,11 +56,10 @@ module.exports = function(gulp, options, plugins) {
 
                     return false;
                 }))
-                .pipe(plugins.filter(function(file) {
+                .pipe($.filter(function(file) {
                     var dir = path.dirname(file.path);
                     var types = ['js', 'css'];
 
-                    // TODO: do refactoring
                     types.forEach(function(type) {
                         var typeFile = dir + '/' + type + '.txt';
                         var foundFiles = glob.sync(dir + '/**/!(*.spec).' + type).map(function(file) {

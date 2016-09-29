@@ -2,11 +2,11 @@
 
 var gulp = require('gulp');
 var runSequence = require('run-sequence').use(gulp);
-var plugins = require('gulp-load-plugins')(gulp);
+var $ = require('gulp-load-plugins')(gulp);
 
-require('./gulp-config/task-loader')(gulp, {
+require('./gulp-config/task-loader')(gulp, $, {
     pattern: 'gulp-tasks/**/*.js'
-}, plugins);
+});
 
 /**
  * Build all files (styles, sprites, templates, etc)

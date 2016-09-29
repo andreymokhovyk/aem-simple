@@ -1,16 +1,20 @@
 # Frontend environment and build flow
 
+    npm install jscs -g
+    npm install gulp-cli -g
+    npm install karma-cli -g
+
+
 ## Environment
 
-1. Node.js@4.4.4
-2. npm@2.5.1
-3. install webpack globally ```npm install webpack -g``` from a root user
-4. Go to ```<root>/tools```
+1. Node.js@4.6.0
+2. npm@3.10.8
+3. Go to ```<root>/build-tools```
 
 ## Build
 
-From the ```tools``` directory, run ```npm install``` to install environment dependencies.
-Run ```webpack``` it will build/compile clientlibs and watch for a changes.
+From the ```build-tools``` directory, run ```npm install``` to install environment dependencies.
+Run ```gulp``` it will build/compile clientlibs and watch for a changes.
 
 ## Tests
 
